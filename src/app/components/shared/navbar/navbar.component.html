@@ -1,0 +1,24 @@
+
+<p>
+  <mat-toolbar>
+    <button mat-icon-button class="icon" aria-label=" icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <a class="nav-link" href="#" [routerLink]="['/employees/list']">
+      <span>Dashboard</span>
+    </a>
+    <!--<a class="nav-link" href="#" [routerLink]="['/employee/profile']">
+      <button mat-icon-button class="icon" aria-label=" icon-button with heart icon">
+        <mat-icon>account_circle</mat-icon> Profile
+      </button>
+    </a>-->
+
+    <span class="spacer"></span>
+    <button (click)="onLogout($event)" mat-icon-button class="icon" aria-label=" icon-button with heart icon">
+      <mat-icon>power_settings_new</mat-icon> Logout
+    </button>
+
+  </mat-toolbar>
+</p>
+

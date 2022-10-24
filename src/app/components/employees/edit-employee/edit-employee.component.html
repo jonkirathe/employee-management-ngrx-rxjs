@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row  justify-content-center background ">
+    <div class="col-8">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>Edit Profile</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form  [formGroup]="form">
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field class="full-width" appearance="fill" >
+                  <mat-label>Residential Address</mat-label>
+                  <input matInput formControlName="address" id="address">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!--<mat-form-field class="full-width" appearance="fill">
+              <mat-label>Work office location</mat-label>
+              <mat-select formControlName="officeLocation" id="officeLocation">
+                <mat-option value="Los Angeles">Los Angeles</mat-option>
+                <mat-option value="Cape Town">Cape Town</mat-option>
+                <mat-option value="London">London</mat-option>
+              </mat-select>
+            </mat-form-field>-->
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="submit()" [disabled]="!form.valid" color="primary">Edit</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

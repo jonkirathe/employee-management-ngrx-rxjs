@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row  justify-content-center background mt-5">
+    <h2 class="text-center">Employees Management</h2>
+    <div class="col-4 border-2 border-primary bg-light p-3 m-3">
+      <label>Login</label>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="email"/>
+          <!--<div *ngIf="form.get('email').touched && !form.get('email').valid">
+            <div *ngIf="form.get('email').errors.required">
+              Email is required
+            </div>
+            <div *ngIf="form.get('email').errors.email">Invalid Email</div>
+          </div>-->
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <!--<div *ngIf="form.get('password').touched && !form.get('password').valid">
+            <div>Password is required</div>
+          </div>-->
+        </div>
+
+        <div class="mb-3">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!form.valid"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+      <span>Create New Account </span>
+      <a [routerLink]="['/auth/signUp']">SignUp</a>
+      <br/>
+    </div>
+  </div>
+</div>
