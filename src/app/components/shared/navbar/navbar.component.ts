@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
 import {autoLogout} from "../../../store/auth/auth.actions";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/app.state";

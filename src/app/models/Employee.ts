@@ -1,4 +1,4 @@
-export interface IEmployee {
+export interface Employee {
   imageUrl: string,
   firstName: string,
   lastName: string,

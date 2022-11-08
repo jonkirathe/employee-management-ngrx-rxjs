@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs'
-import {IEmployee} from "../models/IEmployee";
-import {IAuth} from "../models/IAuth";
+import {Employee} from "../models/Employee";
+import {Auth} from "../models/Auth";
 import {autoLogout} from "../store/auth/auth.actions";
 import {AppState} from "../store/app.state";
 import {Store} from "@ngrx/store";
@@ -17,42 +17,34 @@ export class ApiService {
   constructor(private toastr: ToastrService, private http: HttpClient, private store: Store<AppState>) {}
 
   getEmployees(): Observable<any[]> {
-    return this.http.get<IEmployee[]>(this.url + '/employee');
+    return this.http.get<Employee[]>(this.url + '/employee');
   }
 
-  getUser(email: | string): Observable<IAuth> {
-    return this.http.get<IAuth>(this.url + '/user?email='+ email);
+  getUser(email: | string): Observable<Auth> {
+    return this.http.get<Auth>(this.url + '/user?email='+ email);
   }
 
   //login with JSON Server
-  login(email: string, password: string): Observable<IAuth> {
-    return this.http.get<IAuth>(this.url + '/user?email=' + email);
+  login(email: string, password: string): Observable<Auth> {
+    return this.http.get<Auth>(this.url + '/user?email=' + email);
   }
 
-  //login with API
-  /*login(email: string, password: string): Observable<IAuth> {
-    return this.http.post<IAuth>(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=`,
-      { email, password, returnSecureToken: true }
-    );
-  }*/
-
-  public addUserData( user: IAuth | any): Observable<any> {
+  public addUserData( user: Auth | any): Observable<any> {
     return this.http.post(this.url + '/user', user);
   }
 
-  signUp(email: string, password: string): Observable<IAuth> {
-    return this.http.post<IAuth>(
+  signUp(email: string, password: string): Observable<Auth> {
+    return this.http.post<Auth>(
       `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=`,
       { email, password, returnSecureToken: true }
     );
   }
 
-  formatUser(data: IAuth) {
+  formatUser(data: Auth) {
     const expirationDate = new Date(
       new Date().getTime() + +data.expiresIn * 1000
     );
-    const user: IAuth = {
+    const user: Auth = {
       password: "",
       isAuthenticated: false,
       expiresIn: "",
@@ -90,13 +82,13 @@ export class ApiService {
     this.toastr.error(message, 'Message');
   }
 
-  setUserInLocalStorage(user: IAuth) {
+  setUserInLocalStorage(user: Auth) {
     localStorage.setItem('userData', JSON.stringify(user));
 
     // this.runTimeoutInterval(user);
   }
 
-  runTimeoutInterval(user: IAuth) {
+  runTimeoutInterval(user: Auth) {
     const todaysDate = new Date().getTime();
     const expirationDate = user.expirationDate.getTime();
     const timeInterval = expirationDate - todaysDate;
@@ -109,10 +101,12 @@ export class ApiService {
 
   getUserFromLocalStorage() {
     const userDataString = localStorage.getItem('userData');
+    console.log('calling auto login')
+    console.log('user data', userDataString)
     if (userDataString) {
       const data = JSON.parse(userDataString);
       const expirationDate = new Date(data.expirationDate);
-      const user: IAuth = {
+      const user: Auth = {
         password: "",
         isAuthenticated: false,
         expiresIn: "",
@@ -130,6 +124,7 @@ export class ApiService {
 
   logout() {
     localStorage.removeItem('userData');
+    console.log('remove user data');
     if (this.timeoutInterval) {
       clearTimeout(this.timeoutInterval);
       this.timeoutInterval = null;

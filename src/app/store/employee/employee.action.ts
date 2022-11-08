@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {IEmployee} from "../../models/IEmployee";
+import {Employee} from "../../models/Employee";
 
 export const LOAD_EMPLOYEES_SUCCESS = '[employees page] load employees success';
 export const LOAD_EMPLOYEES = '[employees page] load employees';
@@ -9,7 +9,7 @@ export const loadEmployees = createAction(LOAD_EMPLOYEES);
 
 export const loadEmployeesSuccess = createAction(
   LOAD_EMPLOYEES_SUCCESS,
-  props<{ employees: IEmployee[] }>()
+  props<{ employees: Employee[] }>()
 );
 
 export const loadEmployeesFailure = createAction(

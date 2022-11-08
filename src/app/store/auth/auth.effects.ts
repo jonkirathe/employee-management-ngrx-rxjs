@@ -1,7 +1,6 @@
 import { exhaustMap, map, catchError, tap, mergeMap } from 'rxjs/operators';
 import {
-  autoLogin,
-  autoLogout, loginFail,
+  autoLogin, autoLogout,
   loginStart,
   loginSuccess,
   signupStart,
@@ -15,7 +14,6 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import {ApiService} from "../../services/api.service";
 import {setErrorMessage, setLoadingSpinner} from "../Shared/shared.actions";
-import {getErrorMessage} from "../Shared/shared.selector";
 
 @Injectable()
 export class AuthEffects {
@@ -121,6 +119,7 @@ export class AuthEffects {
       return this.actions$.pipe(
         ofType(autoLogout),
         map((action) => {
+          console.log('calling logout');
           this.apiService.logout();
           this.router.navigate(['auth/login']);
         })

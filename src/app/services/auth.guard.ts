@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree> {
     return this.store.select(isAuthenticated).pipe(
       map((authenticate) => {
+        console.log('is authenticated: ', authenticate)
         if (!authenticate) {
           return this.router.createUrlTree(['auth/login']);
         }

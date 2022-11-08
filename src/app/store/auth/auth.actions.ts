@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {IAuth} from "../../models/IAuth";
+import {Auth} from "../../models/Auth";
 
 export const LOGIN_START = '[auth page] login start';
 export const LOGIN_SUCCESS = '[auth page] login Success';
@@ -31,7 +31,7 @@ export const signupStart = createAction(
 
 export const signupSuccess = createAction(
   SIGNUP_SUCCESS,
-  props<{ user: IAuth; redirect: boolean }>()
+  props<{ user: Auth; redirect: boolean }>()
 );
 
 export const autoLogin = createAction(AUTO_LOGIN_ACTION);

@@ -2,8 +2,8 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {ApiService} from "./api.service";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {TestBed} from "@angular/core/testing";
-import {IEmployee} from "../models/IEmployee";
-import {IAuth} from "../models/IAuth";
+import {Employee} from "../models/Employee";
+import {Auth} from "../models/Auth";
 
 describe('Api Service', () => {
   let apiService: ApiService;
@@ -30,8 +30,8 @@ describe('Api Service', () => {
   });
 
   describe('getAllEmployees & getUser addUser', () => {
-    let expectedEmpsData: IEmployee[];
-    let expectedProfileData: IAuth;
+    let expectedEmpsData: Employee[];
+    let expectedProfileData: Auth;
     let id = '110557252217732081451'
 
     beforeEach(() => {
@@ -45,7 +45,7 @@ describe('Api Service', () => {
         "dob": "30/08/1958",
         "salary": 1,
         "address": "Address1"
-      }] as IEmployee[];
+      }] as Employee[];
 
       expectedProfileData = {
         "userId": "110557252217732081451",
@@ -54,7 +54,7 @@ describe('Api Service', () => {
         "imageUrl": "https://lh3.googleusercontent.com/a/ALm5wu0I_ZdxVKijly_aI_yhYIvwKLJfbYBQOKTo3fClAA=s96-c",
         "address": "147 Nairobi Kenya",
         "officeLocation": "Cape Town"
-      } as IAuth;
+      } as unknown as Auth;
     });
 
     //Test for get employee APIs

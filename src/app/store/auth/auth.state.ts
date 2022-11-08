@@ -1,7 +1,7 @@
-import {IAuth} from "../../models/IAuth";
+import {Auth} from "../../models/Auth";
 
 export interface AuthState {
-  user: IAuth | null;
+  user: Auth | null;
 }
 
 export const initialState: AuthState = {

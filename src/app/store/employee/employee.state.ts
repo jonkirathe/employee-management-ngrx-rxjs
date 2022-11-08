@@ -1,7 +1,7 @@
-import {IEmployee} from "../../models/IEmployee";
+import {Employee} from "../../models/Employee";
 
 export interface EmployeeState {
-  employees: IEmployee[];
+  employees: Employee[];
   error: string | null;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
